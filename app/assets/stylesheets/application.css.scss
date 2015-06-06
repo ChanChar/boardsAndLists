@@ -1,0 +1,49 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery-ui
+ *= require_tree .
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+div.board-list-item {
+
+
+}
+
+btn.create-board {
+
+}
+
+div.list {
+  display: inline-block;
+  float: none;
+  margin: 20px;
+  width: 200px;
+  border: 2px solid black;
+  text-align: center;
+  min-height: 300px;
+  // add shadows
+}
+
+div.board-lists {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+div.lists, .add-card {
+  white-space: normal;
+  float: left;
+  padding: 5px;
+}

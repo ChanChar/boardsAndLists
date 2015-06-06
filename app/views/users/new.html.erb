@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 text-center">
+
+    <h1>Sign Up</h1>
+    <hr>
+
+    <form action="/users" method="post">
+      <input type="hidden" name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+
+        <input name="user[email]" type="text"
+          class='form-control text-center' placeholder='Email'>
+
+        <input name="user[password]" type="password"
+          class='form-control text-center' placeholder='Password'>
+
+      <input type="submit" value="Submit" class="btn btn-primary form-control">
+    </form>
+  </div>
+</div>
