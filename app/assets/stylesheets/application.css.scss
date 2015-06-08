@@ -42,8 +42,32 @@ div.board-lists {
   white-space: nowrap;
 }
 
-div.lists, .add-card {
+div.lists, .add-card, div.cards {
   white-space: normal;
   float: left;
   padding: 5px;
+  width: 100%;
+}
+
+div.card-item {
+  border: 2px solid black;
+  margin: 10px;
+  height: 34px;
+}
+
+div.card-item .card-delete {
+  display: none;
+}
+
+div.card-item:hover .card-delete {
+  display: inline-block;
+}
+
+.card-item {
+  text-align: center;
+}
+
+.card-item button {
+  float: right;
+  height: 30px;
 }

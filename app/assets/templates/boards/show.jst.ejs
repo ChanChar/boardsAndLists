@@ -1,43 +1,18 @@
-<div class="container">
-
-
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="text-center">
-        <title><%= board.escape('title') %></title>
-        <h3><%= board.escape('title') %>'s Lists</h3>
-        <hr>
-      </div>
-      <form class='input-group add-list'>
-        <input type="text" class="form-control text-center list-title" placeholder="List Title">
-        <span class="input-group-btn">
-          <button class="btn btn-success add-list" type="button">+</button>
-        </span>
-      </form>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="text-center">
+      <title><%= board.escape('title') %></title>
+      <h3><%= board.escape('title') %>'s Lists</h3>
+      <hr>
     </div>
+    <form class='input-group add-list'>
+      <input type="text" class="form-control text-center list-title" placeholder="List Title">
+      <span class="input-group-btn">
+        <button class="btn btn-success add-list" type="button">+</button>
+      </span>
+    </form>
   </div>
-  <div class='board-lists'>
-    <% lists.each(function (list) { %>
-      <div class='list'><%= list.escape('title') %>
+</div>
 
-        <form class='input-group add-card'>
-          <input type="hidden" name="card[list_id]" value="<%= list.id %>">
-          <input type="text" name="card[title]"
-            placeholder="Card Title" class='form-control text-center'>
-          <textarea class='form-control card-text' name="card[description]" placeholder='Add a description...'></textarea>
-          <input type="submit" class='btn btn-sm btn-success' value="Add Card">
-        </form>
-
-        <div class='cards'>
-          <% list.cards().each(function (card) { %>
-            <div>
-              <p><%= card.title %></p>
-              <p><%= card.description %></p>
-            </div>
-          <% }) %>
-        </div>
-      </div>
-    <% }); %>
-
-  </div>
+<div class='board-lists sortable'>
 </div>

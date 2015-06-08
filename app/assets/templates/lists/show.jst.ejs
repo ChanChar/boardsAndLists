@@ -1,0 +1,12 @@
+<%= list.escape('title') %>
+
+<form class='input-group add-card'>
+  <input type="hidden" name="card[list_id]" value="<%= list.id %>">
+  <input type="text" name="card[title]"
+    placeholder="Card Title" class='form-control text-center'>
+  <textarea class='form-control card-text' name="card[description]" placeholder='Add a description...'></textarea>
+  <input type="submit" class='btn btn-sm btn-success' value="Add Card">
+</form>
+
+<div class='cards'>
+</div>

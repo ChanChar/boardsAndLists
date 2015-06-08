@@ -2,26 +2,32 @@ TrelloClone.Views.ShowBoard = Backbone.CompositeView.extend({
 
   template: JST['boards/show'],
 
+  className: 'container',
+
   initialize: function () {
+    this.lists = this.model.lists();
+
     this.listenTo(this.model, 'sync delete', this.render);
+    this.listenTo(this.lists, 'remove', this.removeListView);
+    this.listenTo(this.lists, 'add', this.addListView);
+
+    this.lists.each(this.addListView.bind(this));
   },
 
   events: {
-    'click .add-list': 'addList',
+    'click button.add-list': 'addList',
     'submit .add-list': 'addList',
-
-    'submit form.add-card': 'addCard',
   },
 
   render: function () {
-    var lists = this.model.lists();
-    this.$el.html(this.template({ board : this.model, lists: lists }));
+    this.$el.html(this.template({ board : this.model }));
+    this.attachSubviews();
     return this;
   },
 
   addList: function (event) {
     event.preventDefault();
-
+    // refactor to use serializeJSON
     var listTitle = this.$('.list-title').val();
     this.$('.list-title').val('');
     var newList = new TrelloClone.Models.List(
@@ -29,22 +35,19 @@ TrelloClone.Views.ShowBoard = Backbone.CompositeView.extend({
     newList.save({}, {
       success: function () {
         var boardPath = '#boards/' + this.model.id;
-        Backbone.history.navigate('dummyDivert'); // Refactor?
+        Backbone.history.navigate('dummyDivert');
         Backbone.history.navigate(boardPath, { trigger: true });
       }.bind(this)
     });
   },
 
-  addCard: function (event) {
-    event.preventDefault();
-    var cardContent = $(event.currentTarget).serializeJSON();
-    var newCard = new TrelloClone.Models.Card(cardContent);
-    newCard.save({}, {
-      success: function () {
-        var boardPath = '#boards/' + this.model.id;
-        Backbone.history.navigate('dummyDivert'); // Refactor?
-        Backbone.history.navigate(boardPath, { trigger: true });
-      }.bind(this)
-    });
+  addListView: function (list) {
+    var listSubview = new TrelloClone.Views.ListShow({ model: list });
+    this.addSubview('div.board-lists', listSubview);
+  },
+
+  removeListView: function (list) {
+    this.removeModelSubview("div.board-lists", list);
   }
+
 });
