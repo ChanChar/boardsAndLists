@@ -17,24 +17,16 @@
 @import "bootstrap";
 @import "font-awesome";
 
-div.board-list-item {
-
-
-}
-
-btn.create-board {
-
-}
-
 div.list {
   display: inline-block;
   float: none;
   margin: 20px;
   width: 200px;
-  border: 2px solid black;
+  border: 1px solid black;
   text-align: center;
   min-height: 300px;
-  // add shadows
+  max-height: 400px;
+  vertical-align: top;
 }
 
 div.board-lists {
@@ -70,4 +62,12 @@ div.card-item:hover .card-delete {
 .card-item button {
   float: right;
   height: 30px;
+}
+
+.ui-sortable-helper {
+  -ms-transform: rotate(8deg); /* IE 9 */
+  -webkit-transform: rotate(8deg); /* Chrome, Safari, Opera */
+  transform: rotate(8deg);
+  box-shadow: 10px 10px 5px #888888;
+  background: white;
 }
